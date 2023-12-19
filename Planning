@@ -1,0 +1,8 @@
+Personal Password Manager 
+By Alex Earl and Harrison Tarsia
+
+Concepts
+  - Password locked Accounts
+  - Key generation from Passwords (using hashes?)
+  - Encrypted Passwords (likely AES 128/192bit)
+  - Decryption of individual passwords when requested
