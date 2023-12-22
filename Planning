@@ -6,3 +6,6 @@ Concepts
   - Key generation from Passwords (using hashes?)
   - Encrypted Passwords (likely AES 128/192bit)
   - Decryption of individual passwords when requested
+
+Passwords (hashes stored to check validity)
+Keygen ? (maybe different hash for keygen: has user and password) add another layer of diffusion proprietary system (use mix of data)
