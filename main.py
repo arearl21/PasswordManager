@@ -3,9 +3,8 @@ from Crypto.Hash import SHA3_256
 from Crypto.Util.py3compat import b
 import os
 
+
 # Global Variables
-
-
 defaultPath = "D:/PasswordManagerFiles/"
 usersFile = "accounts.txt"
 passwordFile = "pass.txt"
@@ -17,15 +16,14 @@ def hashFunction(o):
 
 
 def addUser(username, password):
-    path = defaultPath+usersFile
-    print(path)
-    with open(path) as users:
+    with open(defaultPath+usersFile) as users:
         for line in users:
             if line == username:
                 print("Username Taken\n")
                 return
+    with open(defaultPath+usersFile, "a") as users:
         users.write(username+'\n')
-    with open(defaultPath+passwordFile) as passwords:
+    with open(defaultPath+passwordFile, "a") as passwords:
         passwords.write(hashFunction(password)+'\n')
 
 
