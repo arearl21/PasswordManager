@@ -1,9 +1,33 @@
 from Crypto.Cipher import AES
-from Crypto.Hash import SHA256
+from Crypto.Hash import SHA3_256
+from Crypto.Util.py3compat import b
+import os
 
 # Global Variables
+
+
+defaultPath = "D:/PasswordManagerFiles/"
 usersFile = "accounts.txt"
-loginInfo = "pass.txt"
+passwordFile = "pass.txt"
+
+
+def hashFunction(o):
+    hashObject= SHA3_256.new(data=b(o))
+    return hashObject.hexdigest()
+
+
+def addUser(username, password):
+    path = defaultPath+usersFile
+    print(path)
+    with open(path) as users:
+        for line in users:
+            if line == username:
+                print("Username Taken\n")
+                return
+        users.write(username+'\n')
+    with open(defaultPath+passwordFile) as passwords:
+        passwords.write(hashFunction(password)+'\n')
+
 
 # Login Loop
 close = True
@@ -13,7 +37,8 @@ while close:
     option = input()
     if option == 'quit':
         break
-
+    if option == 'A':
+        addUser(input("Enter Username:"),input("Enter Password:"))
     # Login check
     if option == '2':
         validated = True
